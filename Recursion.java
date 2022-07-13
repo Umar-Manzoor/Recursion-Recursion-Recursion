@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class Recursion {
     public static String[] mergeSort(String[] arr) {
         if (arr.length <= 1) {
@@ -94,7 +96,30 @@ public class Recursion {
 
         return duplicates + countDuplicates(arr1);
     }
-
+    public static boolean verifyPalindrome(String string) {
+        if (string == null) {
+            return false;
+        }
+        if (string.equals("")) {
+            return true;
+        }
+        string = string.toLowerCase();
+        // iterate through string not including the first letter and the last letter
+        String stringer = "";
+        boolean answer = true;
+        if (string.charAt(0) == string.charAt(string.length() - 1)) {
+            answer = true;
+        } else {
+            return false;
+        }
+        if (string.length() > 1) {
+            stringer = string.substring(1,string.length() - 1);
+        } else {
+            return true;
+        }
+        return verifyPalindrome(stringer);
+    }
+    
 
 
 
@@ -108,7 +133,10 @@ public class Recursion {
             System.out.println(i);
         }
          */
-        String[] arr = {"a","a","a","a","a"};
+       /* String[] arr = {"a","a","b","b","b"};
         System.out.println(countDuplicates(arr));
+        */
+        String string = null;
+        System.out.println(verifyPalindrome(string));
     }
 }
