@@ -77,6 +77,24 @@ public class Recursion {
         result = mergeSort(result);
         return result;
     }
+    public static int countDuplicates(String[] arr) {
+        //arr is already sorted
+        int num = arr.length - 1;
+        int duplicates = 0;
+        if (num == 0) {
+            return 0;
+        }
+        if (arr[0].equals(arr[1])) {
+            duplicates +=1;
+        }
+        String[] arr1 = new String[arr.length - 1];
+        for (int i = 1; i <= arr1.length; i++) {
+            arr1[i - 1] = arr[i];
+        }
+
+        return duplicates + countDuplicates(arr1);
+    }
+
 
 
 
@@ -84,10 +102,13 @@ public class Recursion {
 
 
     public static void main(String[] args) {
-        String[][] stringer = {{"b","a"},{"z","x"},{"k","l"}};
+        /*String[][] stringer = {{"b","a"},{"z","x"},{"k","l"}};
         String[] l = mergeAll(stringer);
         for (String i : l) {
             System.out.println(i);
         }
+         */
+        String[] arr = {"a","a","a","a","a"};
+        System.out.println(countDuplicates(arr));
     }
 }
